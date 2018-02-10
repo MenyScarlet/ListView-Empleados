@@ -9,10 +9,12 @@
 
 
     <LinearLayout
+        android:id="@+id/lyDes"
         android:layout_width="match_parent"
-        android:weightSum="1.0"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="5dp"
+        android:weightSum="1.0">
 
         <ImageView
             android:id="@+id/ivDesIMG"
@@ -31,12 +33,14 @@
                 android:id="@+id/tvDesNombre"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:text="TextView" />
 
             <TextView
                 android:id="@+id/tvDesDNI"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="5dp"
                 android:text="TextView" />
         </LinearLayout>
 
@@ -44,6 +48,7 @@
             android:id="@+id/tvDesTelefono"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="0.4"
             android:text="TextView" />
 
@@ -53,13 +58,16 @@
         android:id="@+id/textView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Mi lista"
-        android:textAlignment="center"/>
+        android:text="Lista de empleados"
+        android:textAlignment="center"
+        android:layout_margin="5dp"
+        android:padding="5dp"
+        />
 
     <ListView
         android:id="@+id/lvEmpleados"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
     </ListView>
 </LinearLayout>

@@ -49,7 +49,7 @@ public class AdaptadorEmpleado extends ArrayAdapter<Empleado> {
         //ImagenView
         String imagen = empleados.get(position).getImagen();
 
-        int idImagen = c.getResources().getIdentifier(imagen,"drawable",c.getPackageName());
+        int idImagen = c.getResources().getIdentifier(imagen,"mipmap",c.getPackageName());
 
         ImageView ivListIMG = (ImageView)item.findViewById(R.id.ivListIMG);
 
