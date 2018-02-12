@@ -1,5 +1,6 @@
 package com.example.fjponce.listview;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -43,23 +45,50 @@ public class MainActivity extends AppCompatActivity {
 
         lyDes.setVisibility(LinearLayout.GONE);
 
-    }// FIN onCreate
-
-    public void clickEmpleado(View view){
-        lvEmpleados.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
-
+        lvEmpleados.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view,int position, long arg3) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
                 if ( lyDes.getVisibility() == LinearLayout.GONE ){
                     lyDes.setVisibility(LinearLayout.VISIBLE);
+
+                    Empleado c = ((Empleado)parent.getItemAtPosition(position));
+                    String img = c.getImagen();
+                    String nombre = c.getNombre();
+                    String dni = c.getDni();
+                    int telefono = c.getTelf();
+                    int idImagen = getApplicationContext().getResources().getIdentifier(img,
+                            "mipmap",getApplicationContext().getPackageName());
+
+                    ivDesIMG.setImageResource(idImagen);
+                    tvDesNombre.setText(""+nombre);
+                    tvDesDNI.setText(""+dni);
+                    tvDesTelefono.setText(telefono);
+
                 }
 
-                return true;
+
+
 
             }
         });
-    }
+
+        lvEmpleados.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+
+                Empleado c = ((Empleado)parent.getItemAtPosition(position));
+                String nombre = c.getNombre();
+                Toast.makeText(getApplicationContext(),"Has sellecionado al empleado/a " + nombre,
+                        Toast.LENGTH_LONG).show();
+                return true;
+            }
+        });
+
+
+
+    }// FIN onCreate
+
 
     private void cargarEmpleados() {
         empleados.add( new Empleado(
